@@ -11,21 +11,22 @@ class MoviesList extends Component {
 
     componentDidMount() {
         this.movieOptions();
-
     }
 
     movieOptions = () => {
         API.movieOptions()
-        .then(res => console.log("testing" , res))
+        .then(res => {
+            this.setState({ movies: res.data})
+        })
         .catch(err => console.log(err))
     }
 
     render() { 
-        console.log(this.state.movies)
+        console.log('happening? ' , this.state.movies)
 
         return (
             <MovieGrid>
-                {/* {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)} */}
+                {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
             </MovieGrid>
         )
     }

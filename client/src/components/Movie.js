@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const POSTER_PATH = 'http://image/tmdb.org/t/p/w154';
+const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 
 const Movie = ({ movie }) => (
     <Link to={`/${movie.id}`}>
