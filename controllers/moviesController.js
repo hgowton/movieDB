@@ -1,27 +1,23 @@
 const db = require("../models");
 const axios = require("axios");
 
-// Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
-      const { query: params } = req;
-    let url = `https://www.googleapis.com/books/v1/volumes?q=${params.search}&key=${process.env.REACT_APP_API_KEY}`
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
     console.log("movie search controller URL: ", url)
     axios.get(url)
-    .then(results => 
-        console.log(results)
-    //     results.data.items.map(
-    //   result =>
-    //   ({
-    //     id: result.id,
-    //     title: result.volumeInfo.title,
-    //     authors: result.volumeInfo.authors,
-    //     image: result.volumeInfo.imageLinks ? result.volumeInfo.imageLinks.thumbnail : "http://i.imgur.com/J5LVHEL.jpg",
-    //     synopsis: result.volumeInfo.description,
-    //     link: result.volumeInfo.infoLink
-    //   })
-    // )
-    )
+    .then(results => results.data.results.map(
+          result => 
+          ({
+            id: result.id, 
+            release: result.release_date,
+            title: result.title,
+            poster_path: result.poster_path,
+            backdrop_path: result.backdrop_path,
+            overview: result.overview
+          })
+        )
+        )
     .then(movies => res.json(movies))
     .catch(err => console.error(err))
   },
