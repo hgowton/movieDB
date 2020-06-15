@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import logo from "./logo.svg";
 import MoviesList from "./components/MoviesList";
+import MovieDetail from "./components/MovieDetail";
 import "./App.css";
 
 
-class App extends Component {
-  render() {
-    return (
+const App = () => (
     <Router>
       <div className="App">
         <header className="App-header">
@@ -16,12 +15,11 @@ class App extends Component {
           </Link>
         </header>
         <Switch>
+          <Route path="/:id" component={MovieDetail} />
           <Route extact path="/" component={MoviesList} />
         </Switch>
       </div>
     </Router>
-    );
-  }
-}
+);
 
 export default App;
