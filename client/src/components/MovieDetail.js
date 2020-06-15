@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Poster } from './Movie';
 import API from '../utils/API';
@@ -17,30 +18,29 @@ class MovieDetail extends Component {
     }
 
     filmSearch = filmId => {
-        console.log("check: ", filmId)
         API.filmSearch(filmId)
-        .then(res => 
-            {
-            this.setState({ movie: res.data})
-        }
-        )
+        .then(res => {this.setState({ movie: res.data})
+        })
         .catch(err => console.log(err))
     }
 
     render() {
         const { movie } = this.state;
-        console.log(this.props.location.pathname.slice(1))
 
         return (
             <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
                 <MovieInfo>
+                    <a href={movie.link} target="_blank" rel="noopener noreferrer">
                     <Poster src={movie.poster_path ? 
                     `${POSTER_PATH}${movie.poster_path}` :
                     "http://gearr.scannain.com/wp-content/uploads/2015/02/noposter.jpg"} 
                     alt="{movie.title}" />
+                    </a>
+
                     <div>
                         <h1>{movie.title}</h1>
                         <h3>{movie.release}</h3>
+                        <p>{movie.runtime} minutes</p>
                         <p>{movie.overview}</p>
                     </div>
                 </MovieInfo>

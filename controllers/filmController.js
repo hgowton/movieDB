@@ -4,9 +4,7 @@ const axios = require("axios");
 module.exports = {
   findAll: function(req, res) {
       const { query: params } = req;
-      console.log("search params: " , params)
     let url = `https://api.themoviedb.org/3/movie/${params.filmId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-    console.log("film controller URL: ", url)
     axios.get(url)
     .then(results => 
           ({
@@ -17,6 +15,7 @@ module.exports = {
             backdrop_path: results.data.backdrop_path,
             overview: results.data.overview,
             link: results.data.homepage,
+            runtime: results.data.runtime,
           })
         )
     .then(movies => res.json(movies))
