@@ -30,12 +30,18 @@ class MovieDetail extends Component {
         return (
             <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`} >
                 <MovieInfo>
-                    <a href={movie.link} target="_blank" rel="noopener noreferrer">
+                    {movie.link ? 
+                    ( <a href={movie.link} target="_blank" rel="noopener noreferrer">
                     <Poster src={movie.poster_path ? 
                     `${POSTER_PATH}${movie.poster_path}` :
                     "http://gearr.scannain.com/wp-content/uploads/2015/02/noposter.jpg"} 
                     alt="{movie.title}" />
-                    </a>
+                    </a> ) : 
+                    ( <Poster src={movie.poster_path ? 
+                    `${POSTER_PATH}${movie.poster_path}` :
+                    "http://gearr.scannain.com/wp-content/uploads/2015/02/noposter.jpg"} 
+                    alt="{movie.title}" /> )
+                    }
 
                     <div>
                         <h1>{movie.title}</h1>

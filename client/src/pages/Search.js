@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { MovieGrid } from '../components/Styled'
+import Movie from '../components/Movie';
 import { FormBtn, Input } from '../components/Form';
-import MoviesList from '../components/MoviesList';
 import API from "../utils/API";
+
 
 class Search extends Component {
 
@@ -44,7 +46,9 @@ class Search extends Component {
                 disabled={!this.state.query}
                 onClick={this.handleFormSubmit} 
                 required />
-                <MoviesList />
+            <MovieGrid>
+                {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+            </MovieGrid>
             </div>
         )
     }
