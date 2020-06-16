@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Poster } from './Styled';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +23,3 @@ Movie.propTypes = {
     }).isRequired,
 };
 
-export const Poster = styled.img `
-box-shadow 0 0 35px black;
-`

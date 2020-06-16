@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FormBtn, Input } from '../components/Form';
+import MoviesList from '../components/MoviesList';
 import API from "../utils/API";
 
 class Search extends Component {
@@ -12,7 +13,8 @@ class Search extends Component {
     movieSearch = query => {
         API.movieSearch(query)
         .then(res => {
-            console.log("movieSearch: ", res)
+            this.setState({ movies: res.data})
+            // console.log("movieSearch: ", res)
         })
         .catch(err => console.log(err))
     }
@@ -42,6 +44,7 @@ class Search extends Component {
                 disabled={!this.state.query}
                 onClick={this.handleFormSubmit} 
                 required />
+                <MoviesList />
             </div>
         )
     }
