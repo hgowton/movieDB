@@ -1,12 +1,12 @@
 import React from 'react';
-import { Poster, PosterAlt, Title } from './Styled';
+import { Poster, PosterAlt, Title, LinkDefault } from './Styled';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 
 const Movie = ({ movie }) => (
-    <Link to={`/${movie.id}`}>
+    <LinkDefault href={`/${movie.id}`}>
         {movie.poster_path ? 
         <Poster src={`${POSTER_PATH}${movie.poster_path}`}
         alt="{movie.title}" /> :
@@ -14,7 +14,7 @@ const Movie = ({ movie }) => (
             <Title>{movie.title}</Title>
         </PosterAlt>
     }
-    </Link>
+    </LinkDefault>
 );
 
 export default Movie;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MovieGrid } from '../components/Styled'
 import Movie from '../components/Movie';
+import { Container, Row, Col } from '../components/Grid';
 import { FormBtn, Input } from '../components/Form';
 import API from "../utils/API";
 
@@ -36,20 +37,26 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
-                <Input
-                value={this.state.query}
-                handleInputChange={this.handleInputChange}
-                name='query'
-                placeholder='Search for movie' />
-                <FormBtn
-                disabled={!this.state.query}
-                onClick={this.handleFormSubmit} 
-                required />
+            <Container>
+                <Row>
+                    <Col size="md-10">
+                    <Input
+                    value={this.state.query}
+                    handleInputChange={this.handleInputChange}
+                    name='query'
+                    placeholder='Search for movie' />
+                    </Col>
+                    <Col size="md-2">
+                    <FormBtn
+                    disabled={!this.state.query}
+                    onClick={this.handleFormSubmit} 
+                    required />
+                    </Col>
+                </Row>
             <MovieGrid>
                 {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
             </MovieGrid>
-            </div>
+            </Container>
         )
     }
 }

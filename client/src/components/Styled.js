@@ -26,12 +26,28 @@ img {
     top: -5rem;
 }`
 
-export const Title = styled.div `
-text-align: center;
-padding: 2%;
-&:hover, :link, :active, :visited {
+export const LinkDefault = styled.a `
+text-decoration: none;
+color: white;
+&:link, :hover, :active, :visited {
     text-decoration: none;
-}
+    color: white;
+};
+
+`
+
+export const Title = styled.p `
+text-align: center;
+text-shadow: 0 0 30px black;
+text-size: 20px;
+font-weight: bold;
+position: relative;
+top: 1rem;
+padding: 3%;
+text-decoration: none;
+&:link, :hover, :active, :visited {
+    text-decoration: none;
+};
 `
 
 export const Poster = styled.img `
