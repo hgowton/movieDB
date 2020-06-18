@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MovieGrid } from '../components/Styled'
 import Movie from '../components/Movie';
+import Accordian from '../start/Accordian';
 import { Container, Row, Col } from '../components/Grid';
 import { FormBtn, Input } from '../components/Form';
 import API from "../utils/API";
@@ -11,6 +12,7 @@ class Search extends Component {
     state = {
         movies: [],
         query: '',
+        selected: {},
     }; 
 
     movieSearch = query => {
@@ -35,6 +37,10 @@ class Search extends Component {
         this.movieSearch(this.state.query)
     }
 
+    handleSelected = () => {
+        console.log("selected")
+    }
+
     render() {
         return (
             <Container>
@@ -53,8 +59,10 @@ class Search extends Component {
                     required />
                     </Col>
                 </Row>
+                <Accordian movie="hello" />
             <MovieGrid>
-                {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+                {this.state.movies.map(movie => 
+                <Movie key={movie.id} movie={movie} />)}
             </MovieGrid>
             </Container>
         )

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { MovieWrapper, MovieInfo} from './Styled';
 import { Poster } from './Styled';
 import API from '../utils/API';
+var moment = require('moment');
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const BACKDROP_PATH = 'http://image.tmdb.org/t/p/w1280';
@@ -45,7 +46,7 @@ class MovieDetail extends Component {
 
                     <div>
                         <h1>{movie.title}</h1>
-                        <h3>{movie.release}</h3>
+                        <h3>{moment(movie.release).format("MMMM Do YYYY")}</h3>
                         <p>{movie.runtime} minutes</p>
                         <p>{movie.overview}</p>
                     </div>
